@@ -1,6 +1,7 @@
 package cs2336_GA;//Collin Best Package
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,7 +195,7 @@ public class mainDriver extends Application {
             if (e.getButton() == MouseButton.PRIMARY) {
             	
                 Circle c = drawPoint(x,y);
-                
+                System.out.println("x,y is " + x + "," + y); //DEBUG CODE
                 pane.getChildren().add(c);
                 
             } else if ( e.getButton() == MouseButton.SECONDARY ) {
@@ -222,16 +223,21 @@ public class mainDriver extends Application {
 	    
 		
 	}
-	
+	public static int vertexCount = 0;
 	private Circle drawPoint(double x, double y) {
 		
+		//isclose
         Circle c = new Circle(x, y, 20, Color.TRANSPARENT);
-        
         c.setStroke(Color.BLACK);
-        
+        int xVert = (int)x;//NEW
+        int yVert = (int)y;//NEW
+        Point2D newPoint = new Point2D(xVert,yVert);//NEW
+        points.add(vertexCount, newPoint);//NEW
+        vertexCount++;//NEW
         return c;
         
     }
+
 	
 	private void removePoint(double x, double y) {
 
@@ -241,10 +247,9 @@ public class mainDriver extends Application {
         	
             Node c = list.get(i);
 
-            if (c instanceof Circle && c.contains(x, y)) {
+            if (c instanceof Circle && c.contains(x, y) && points.contains(new Point((int)x,(int)y))) {
             	
                 pane.getChildren().remove(c);
-                
                 break;
                 
             }
