@@ -1,0 +1,34 @@
+All tasks- mark off what you have done with your name
+1)GUI
+	a)Setup/launch - Cameron
+	b)legend - Cameron
+	c)buttons - Cameron
+2) Event handling
+	a)Add (left-click) - Collin
+		-diplays on gui - Cameron
+		-fills array - Collin
+		-displays vertex number
+	b)Move(Cntrl-drag) - Collin
+		-displays on gui
+		-fills array
+	c)Connect(drag) - Collin
+		-displays on gui - Cameron
+		-fills array - Collin
+	d(right_click)- Collin
+		-displays on gui - Cameron
+		-removes array- Collin
+3) Implementation
+	a)MST - Nikhil
+		-functions with dynamic GUI array
+		-displays on GUI
+	b)ShortestPath (two points) - Nikhil
+		-functions with dynamic GUI array
+		-displays on GUI
+	c)Shortest path(one vertex) - Nikhil
+		-functions with dynamic GUI array
+		-displays on GUI
+4) Remaining requirements
+	a) radius of each vertex is 20 pixels
+	b) input validation of vertex placement-cannot be inside or near another vertex
+	c)Renumbering vertices array after vertex deletion
+	
