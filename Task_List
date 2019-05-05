@@ -1,0 +1,34 @@
+All tasks- mark off what you have done with your name
+1)GUI
+	a)Setup/launch
+	b)legend
+	c)buttons
+2) Event handling
+	a)Add (left-click)
+		-diplays on gui
+		-fills array
+		-displays vertex number
+	b)Move(Cntrl-drag)
+		-displays on gui
+		-fills array
+	c)Connect(drag)
+		-displays on gui
+		-fills array
+	d(right_click)
+		-displays on gui
+		-removes array
+3) Implementation
+	a)MST
+		-functions with dynamic GUI array
+		-displays on GUI
+	b)ShortestPath (two points)
+		-functions with dynamic GUI array
+		-displays on GUI
+	c)Shortest path(one vertex) - DFS???
+		-functions with dynamic GUI array
+		-displays on GUI
+4) Remaining requirements
+	a) radius of each vertex is 20 pixels
+	b) input validation of vertex placement-cannot be inside or near another vertex
+	c)Renumbering vertices array after vertex deletion
+	

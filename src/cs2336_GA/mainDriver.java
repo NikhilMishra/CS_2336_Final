@@ -1,4 +1,5 @@
-package cs2336_GA;
+package cs2336_GA;//Collin Best Package
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
@@ -64,8 +64,63 @@ public class mainDriver extends Application {
 	private Label instructMove = new Label("Move:		Ctrl Drag");
 	private Label instructConnect = new Label("Connect:		Drag");
 	private Label instructRemove = new Label("Remove:		Right Click");
-  
-  //Pane for box to be in
+	
+	public class Line {
+		
+		  public Point2D p1;
+		  public Point2D p2;
+		  
+		  public Line(Point2D p1, Point2D p2) {
+			  
+		   this.p1 = p1;
+		   this.p2 = p2;
+		   
+		  }
+		  
+		  public double getWidth() {
+			  
+		   return Math.sqrt((p1.getX() - p2.getX()) * (p1.getX() - p2.getX()) + (p1.getY() - p2.getY()) * (p1.getY() - p2.getY()));
+		   
+		  }
+		  
+	}
+	
+	private WeightedGraph<Integer> getGraph() {
+		
+		  List<Integer> vertices = new ArrayList<>();
+		  
+		  for (int i = 0; i < points.size(); i++) {
+			  
+			  vertices.add(i);
+		   
+		  }
+		  
+		  List<WeightedEdge> edges = new ArrayList<>();
+		  
+		  for (int i = 0; i < lines.size(); i++) {
+			  
+			  Line line = lines.get(i);
+			  int u = points.indexOf(line.p1);
+			  int v = points.indexOf(line.p2);
+			  double weight = line.getWidth();
+			  
+		   if(!edges.contains(new WeightedEdge(u, v, weight))) {
+			   
+			   edges.add(new WeightedEdge(u, v, weight));
+		    
+			   edges.add(new WeightedEdge(v, u, weight));
+		    
+		   }
+		   
+		  }
+		  
+		  WeightedGraph<Integer> graph = new WeightedGraph<Integer>(edges, vertices);
+		  
+		  return graph;
+		  
+		 }
+	
+	//Pane for box to be in
 	BorderPane pane = new BorderPane();
 
 	@SuppressWarnings({ "static-access", "rawtypes", "unchecked" })
@@ -87,6 +142,14 @@ public class mainDriver extends Application {
 		instruct.setMargin(instructMove, new Insets(10, 0, 5, 20));
 		instruct.setMargin(instructConnect, new Insets(10, 0, 5, 20));
 		instruct.setMargin(instructRemove, new Insets(10, 0, 5, 20));
+		
+		instruct.setStyle("-fx-padding: 10;" + 
+                "-fx-border-style: solid inside;" + 
+                "-fx-border-width: 2;" +
+                "-fx-border-height: 5;" +
+                "-fx-border-insets: 5;" + 
+                "-fx-border-radius: 5;" + 
+                "-fx-border-color: black;");
 		
 		pane.setLeft(instruct);
 		BorderPane.setAlignment(instruct, Pos.TOP_LEFT);
