@@ -31,7 +31,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 
 
-public class mainDriver extends Application {
+public class testCompletedDriver extends Application {
 	
 	//User-clicked vertices on graph
 	private ArrayList<Point2D> points = new ArrayList<>();
@@ -69,7 +69,7 @@ public class mainDriver extends Application {
 	private Label instructRemove = new Label("Remove:		Right Click");
 	private WeightedGraph WG = null;
 	private GraphEvent displayGraph = new GraphEvent();
-	/*
+	
 	public class Line {
 		
 		  public Point2D p1;
@@ -89,7 +89,7 @@ public class mainDriver extends Application {
 		  }
 		  
 	}
-	*/
+	
 	private WeightedGraph<Integer> getGraph() {
 		
 		  List<Integer> vertices = new ArrayList<>();
@@ -237,7 +237,7 @@ public class mainDriver extends Application {
 	    
 		
 	}
-	
+	/*
 	private Circle drawPoint(double x, double y) { // WORKING PERFECT
 		
 		//isclose
@@ -281,6 +281,7 @@ public class mainDriver extends Application {
         }
         
     }
+	
 	private void dragPoint(double x, double y) { //needs more javafx knowledge - will work on as a console command first
 		ObservableList<Node> list = pane.getChildren();
 		
@@ -289,7 +290,7 @@ public class mainDriver extends Application {
 			//if(c instanceofCircle)
 		}
 	}
-
+*/
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -304,7 +305,7 @@ public class mainDriver extends Application {
 		private boolean lineExists = false;
 		private AbstractGraph.Tree tree = null;
 		private List path = null;
-		private Line line = new Line();
+		private javafx.scene.shape.Line line = new javafx.scene.shape.Line();
 		private ArrayList<CircleVertex> vertices = new ArrayList<>();
 		private ArrayList<VertexEdge> edges = new ArrayList<>();
 		
@@ -415,15 +416,17 @@ public class mainDriver extends Application {
 	}
 	public boolean isClose(CircleVertex v) {
 		for(int i = 0; i < vertices.size(); i++) {
-			if(CircleVertex.getWeight(vertices.get(i), v) <=2 * CircleVertex.RADIUS_ + 5) { //dont know what the math means
+			if(CircleVertex.getWeight(vertices.get(i), v) <=2 * CircleVertex.Radius + 5) { //dont know what the math means
 				return true;
 			}
 			
 		}
 		return false;
+	}	
+	
 	}
 	public static class CircleVertex{
-		final static int RADIUS_ = 20;
+		static int Radius = 20;
 		double x;
 		double y;
 		public CircleVertex() {
@@ -452,10 +455,10 @@ public class mainDriver extends Application {
 		public double getWeight(CircleVertex v) {
 			return getWeight(x,y,v.x,v.y);
 		}
-		public static double getWeight(CircleVertex v1, CircleVertex v2) {
+		public static double getWeight(CircleVertex v1, CircleVertex v2) {//was static
 			return getWeight(v1.x,v1.y,v2.x,v2.y);
 		}
-		public static double getWeight(double x1, double x2, double y1, double y2) {
+		public static double getWeight(double x1, double x2, double y1, double y2) { //was static
 			double c = Math.pow((x1-x2), 2) + Math.pow((y1-y2),2);
 			return Math.sqrt(c);
 		}
@@ -464,10 +467,10 @@ public class mainDriver extends Application {
 			return v.getX() ==x && v.getY() == y;
 		}
 		public boolean contains(double u, double v) {
-			return getWeight(x,y,u,v)<=RADIUS_;
+			return getWeight(x,y,u,v)<=Radius;
 		}
 		public boolean contains(Point2D p) {
-			return getWeight(x,y,p.getX(),p.getY()) <=RADIUS_;
+			return getWeight(x,y,p.getX(),p.getY()) <=Radius;
 		}
 	}
 		
@@ -479,10 +482,5 @@ public class mainDriver extends Application {
 			}
 		}
 	
-	
-	
-		
-		
-	}
 }
 
